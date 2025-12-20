@@ -1,0 +1,236 @@
+/* ===========================================
+   CIVICLEARN – CONSOLIDATED SHARED STYLES
+   (Base, Fonts, Colors, Box-Sizing Fix, Header, Footer, Banner)
+   =========================================== */
+
+/* --- CORE SETUP --- */
+
+/* GLOBAL FONTS (Must be BEFORE other styles) */
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap");
+
+/* BOX-SIZING FIX */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* COLOR PALETTE */
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #5b21b6;
+  --bg-soft: #f7f2e8; /* Background color */
+  --bg: #f7f2e8;      /* Alias for BG */
+  --text-main: #101013;
+  --text: #101013;   /* Alias for Text */
+  --muted: #555;
+  --card-bg: #ffffff;
+}
+
+/* BASE STYLES */
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: var(--bg-soft);
+  font-family: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main);
+  min-height: 400;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================================
+   GLOBAL HEADER (.site-header)
+   =========================================== */
+
+.site-header {
+  backdrop-filter: blur(14px);
+  background: linear-gradient(
+    to bottom,
+    rgba(247,242,232,0.96),
+    rgba(247,242,232,0.90)
+  );
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  color: var(--text-main);
+}
+.brand-link img { width: 22px; height: auto; }
+
+.brand-title {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.1rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.15rem 0;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+}
+
+.header-nav a:hover {
+  border-bottom-color: var(--brand);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.brand-powered {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.brand-powered span {
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.btn-small-purple {
+  background: var(--brand);
+  color: #fff;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.btn-small-purple:hover {
+  background: var(--brand-dark);
+}
+
+
+/* --- HEADER RESPONSIVENESS --- */
+@media (max-width: 800px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.6rem;
+  }
+  .header-left {
+    width: 100%;
+    justify-content: center;
+  }
+  .header-center {
+    order: 3;
+    width: 100%;
+  }
+  .header-right {
+    order: 2;
+  }
+  .header-nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-inner {
+    padding-inline: 1.0rem;
+  }
+  .header-left,
+  .header-left .brand-link {
+    flex-shrink: 0 !important;
+  }
+  .header-nav {
+    gap: 0.7rem;
+    font-size: 0.85rem;
+  }
+  .brand-powered {
+    display: none;
+  }
+}
+
+
+/* ===========================================
+   GLOBAL FOOTER (.cl-footer)
+   =========================================== */
+
+/* Footer base (styles from civiclearn-pages.css) */
+footer {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  margin-top: 2rem;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #666;
+}
+
+/* cl-footer structure (styles from shared.css) */
+.cl-footer {
+  padding: 1.8rem 1rem 2.2rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.cl-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 0.82rem;
+  color: rgba(0,0,0,0.55);
+  text-align: center;
+  font-weight: 400;
+}
+
+.cl-footer-brand {
+  color: var(--brand);
+  font-weight: 600;
+}

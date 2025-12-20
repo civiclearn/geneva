@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Articles & Guides – Naturalisation à Genève</title>
+  <meta name="description" content="Tous les articles pour vous préparer à la naturalisation à Genève : test, entretien, institutions, langue, traditions, culture et plus.">
+
+  <link rel="canonical" href="https://naturalisationgeneve.ch/articles">
+
+  <!-- OG -->
+  <meta property="og:title" content="Articles & Guides – Naturalisation à Genève">
+  <meta property="og:description" content="Guides pratiques et articles pour réussir votre naturalisation à Genève.">
+  <meta property="og:image" content="https://naturalisationgeneve.ch/assets/images/articles/hero-swiss-flag.webp">
+
+  <link rel="stylesheet" href="/assets/css/shared.css">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- LEFT: Logo -->
+    <div class="header-left">
+      <a href="/index.html" class="brand-link">
+        <img src="/assets/images/ch.svg" alt="Genève">
+        <div class="brand-title">NaturalisationGenève.ch</div>
+      </a>
+    </div>
+
+    <!-- CENTER: Flex spacer (required for alignment) -->
+    <div class="header-center"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="header-nav">
+      <a href="/test-gratuit.html">Test gratuit</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+
+    <!-- RIGHT: Powered by + Button -->
+    <div class="header-right">
+      <div class="brand-powered">propulsé par <span>CivicLearn</span></div>
+      <a href="https://civiclearn.com/geneva/checkout.html" class="btn-small-purple">S’inscrire</a>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section class="articles-hero"
+         style="background-image:url('/assets/images/articles/hero-swiss-flag.webp');
+                background-size:cover;background-position:center;
+                padding:90px 20px;color:white;text-align:center;">
+  <h1 class="hero-title">Guides & Articles sur la Naturalisation à Genève</h1>
+  <p class="hero-subtitle">Comprendre le test, l’entretien, les institutions, la culture et les traditions.</p>
+</section>
+
+<!-- CTA TOP -->
+<section class="article-cta-top">
+  <h3>Préparez votre naturalisation avec confiance</h3>
+  <p>Tests interactifs, fiches, modules complets et coaching.</p>
+  <a href="https://civiclearn.com/geneva/checkout.html" class="cta-purple">Commencer</a>
+</section>
+
+<!-- FEATURED ARTICLE -->
+<section class="featured-article-section">
+
+  <div class="section-header">
+    <h2 class="section-title">Article mis en avant</h2>
+  </div>
+
+  <div class="featured-article">
+    <div id="featuredArticle"></div>
+  </div>
+
+</section>
+
+
+<!-- ARTICLES GRID -->
+<section class="articles-grid-section">
+  <h2>Tous les articles</h2>
+  <div id="articlesGrid" class="articles-grid"></div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="article-cta-bottom">
+  <h3>Maîtrisez toutes les exigences de la naturalisation</h3>
+  <p>Entraînement complet, simulations d’entretien et tests officiels.</p>
+  <a href="https://civiclearn.com/geneva/checkout.html" class="cta-purple">Accéder à la plateforme</a>
+</section>
+
+<footer class="cl-footer">
+  <div class="cl-footer-inner">
+    © <span id="footer-year"></span> CivicLearn by Testrada — Tous droits réservés.
+  </div>
+</footer>
+
+<script>
+document.getElementById("footer-year").textContent = new Date().getFullYear();
+</script>
+
+<!-- ARTICLE LOADER -->
+<script>
+(async function () {
+  const res = await fetch('/articles/articles.json');
+  const list = await res.json();
+
+  // FEATURED (correct structure)
+  const featured = list[Math.floor(Math.random() * list.length)];
+
+  document.getElementById('featuredArticle').innerHTML = `
+    <a href="${featured.url}" class="featured-card">
+      <div class="featured-card-image">
+        <img src="${featured.image}" alt="${featured.title}">
+      </div>
+      <div class="featured-card-content">
+        <h3>${featured.title}</h3>
+        <p>${featured.desc}</p>
+        <span class="featured-read-more">Lire l’article →</span>
+      </div>
+    </a>
+  `;
+
+  // GRID (correct .blog-card class)
+  const shuffled = list.sort(() => Math.random() - 0.5);
+
+  document.getElementById('articlesGrid').innerHTML = shuffled.map(a => `
+    <a href="${a.url}" class="blog-card">
+      <img src="${a.image}" alt="${a.title}">
+      <h3>${a.title}</h3>
+      <p>${a.desc}</p>
+    </a>
+  `).join('');
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+/* ===========================================
+   ABOUT TEST PAGE STYLES (FINAL & STABLE FLAG BORDER)
+   =========================================== */
+
+main {
+  /* This centers and limits the width of the main content area */
+  max-width: 1000px; 
+  margin: 0 auto;
+  padding: 1rem; /* General padding for mobile safety */
+}
+
+/* 1. Main Content Card */
+.despre-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  
+  /* --- KEY FIX: ROMANIAN FLAG BORDER --- */
+  border-top: 5px solid transparent; /* Placeholder for the image border */
+  border-image: linear-gradient(
+    to right, 
+    #002B7F 33.3%, /* Blue */
+    #FCD116 33.3%, #FCD116 66.6%, /* Yellow */
+    #CE1126 66.6% /* Red */
+  ) 1;
+  /* -------------------------------------- */
+  
+  /* Resetting margins and padding for a clean, non-floating layout */
+  margin-top: 2rem; /* Standard margin below banner or general content */
+  margin-bottom: 3rem;
+  padding: 2.5rem 3rem; /* Standard padding inside the card */
+  
+  position: static; /* Ensure standard flow */
+}
+
+/* 2. Heading Adjustments */
+.despre-card h1 {
+  font-size: 2.2rem;
+  font-weight: 700; 
+  padding: 1.5rem 3.5rem;
+  margin-top: 1rem; 
+  margin-bottom: 1rem;
+}
+
+.despre-card h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.despre-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* 3. Improve Spacing on Lists */
+.despre-card ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
+
+.despre-card ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* 4. Style the Oath Blockquote */
+.despre-card blockquote {
+  background: #f0eef4; 
+  border-left: 5px solid var(--brand);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #333;
+}
+
+/* 5. Mobile Adjustments */
+@media (max-width: 768px) {
+  .despre-card {
+    padding: 1.5rem 1.5rem;
+    margin-top: 1.5rem; 
+    border-radius: 0.75rem;
+  }
+  .despre-card h1 {
+    font-size: 1.8rem;
+  }
+}

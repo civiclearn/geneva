@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test gratuit – Naturalisation Genève | NaturalisationGeneve.ch</title>
+
+  <!-- SEO -->
+  <link rel="canonical" href="https://naturalisationgeneve.ch/test-gratuit.html" />
+
+  <meta name="description"
+    content="Essayez un test gratuit avec 25 questions au format examen officiel. Chronomètre de 30 minutes, corrections automatiques et résultat immédiat. Parfait pour s’entraîner avant l’entretien de naturalisation." />
+
+  <meta name="keywords"
+    content="test gratuit naturalisation Genève, test naturalisation Suisse, entraînement entretien Genève, questions naturalisation Genève" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Test gratuit – 25 questions" />
+  <meta property="og:description"
+    content="Testez-vous gratuitement avec 25 questions réalistes. Minuteur de 30 minutes et résultat final immédiat." />
+  <meta property="og:url" content="https://naturalisationgeneve.ch/test-gratuit.html" />
+  <meta property="og:image" content="https://naturalisationgeneve.ch/assets/images/og-default.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Test gratuit – Naturalisation Genève" />
+  <meta name="twitter:description"
+    content="25 questions, 30 minutes, corrections automatiques. Préparez-vous gratuitement à l’entretien de naturalisation." />
+  <meta name="twitter:image" content="https://naturalisationgeneve.ch/assets/images/og-default.jpg" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/shared.css">
+  <link rel="stylesheet" href="/assets/css/testpages.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="/index.html" class="brand-link">
+        <img src="/assets/images/ch.svg" alt="Genève">
+        <div class="brand-title">NaturalisationGenève.ch</div>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <nav class="header-nav">
+        <a href="/test-gratuit.html">Test gratuit</a>
+        <a href="/contact.html">Contact</a>
+		<a href="https://civiclearn.com/geneva/login">Connexion</a>
+      </nav>
+    </div>
+
+    <div class="header-right">
+      <div class="brand-powered">
+        propulsé par <span>CivicLearn</span>
+      </div>
+      <a href="https://civiclearn.com/geneva/checkout.html" class="btn-small-purple">Obtenir l’accès complet</a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <div class="test-header">
+    <div>
+      <div class="badge">Test gratuit – 25 questions</div>
+      <div class="progress" id="progressLabel">Question 1 sur 25 · Points 0</div>
+    </div>
+    <div class="timer badge" id="timer">30:00</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-title" id="qTitle">…</div>
+    <div class="choices" id="choices"></div>
+
+    <div class="controls">
+      <button class="btn secondary" id="btnPrev" disabled>← Précédente</button>
+      <button class="btn" id="btnNext" disabled>Suivante →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="resultPanel" class="result-panel" style="display:none;">
+    <h2>Résultat du test</h2>
+    <div id="gradeStamp" class="result-stamp"></div>
+    <p id="resultText" class="result-text"></p>
+
+    <div class="result-chart-container">
+      <canvas id="resultChart"></canvas>
+    </div>
+
+    <div class="cta">
+      <a href="https://civiclearn.com/geneva/checkout.html" class="btn">
+        Accéder à toutes les épreuves complètes
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer class="cl-footer">
+  <div class="cl-footer-inner">
+    © 2025 <span class="cl-footer-brand">CivicLearn</span> — Tous droits réservés.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JAVASCRIPT – TEST CONTENT REMAINS 100% IDENTICAL TO DK VERSION -->
+<script>
+/* ---------------------------
+   ALL QUESTIONS (DANISH SET)
+   EXACTLY PRESERVED
+---------------------------- */
+const QUESTIONS = [
+
+  // ================================
+  // 1) SWISS PERSONALITIES (5)
+  // ================================
+  {
+    q: "Qui était Henri Dunant, premier lauréat du prix Nobel de la paix?",
+    a: [
+      "Fondateur de la Croix-Rouge internationale",
+      "Président du Conseil fédéral",
+      "Écrivain romand du XXe siècle"
+    ]
+  },
+  {
+    q: "Pour quoi l’écrivaine Johanna Spyri est-elle surtout connue?",
+    a: [
+      "Pour avoir écrit Heidi",
+      "Pour avoir fondé une université",
+      "Pour avoir dirigé un journal politique"
+    ]
+  },
+  {
+    q: "Quel scientifique suisse a développé les principales théories de la relativité?",
+    a: [
+      "Albert Einstein",
+      "Auguste Piccard",
+      "Paul Klee"
+    ]
+  },
+  {
+    q: "Qui est Roger Federer dans la culture suisse contemporaine?",
+    a: [
+      "Un joueur de tennis mondialement reconnu",
+      "Un conseiller fédéral",
+      "Un compositeur classique"
+    ]
+  },
+  {
+    q: "Auguste Piccard est célèbre pour ses travaux dans quel domaine?",
+    a: [
+      "L’exploration scientifique en ballon stratosphérique et sous-marin",
+      "La poésie romantique",
+      "La diplomatie internationale"
+    ]
+  },
+
+  // ================================
+  // 2) GENEVA HISTORY (5)
+  // ================================
+  {
+    q: "Quel réformateur a joué un rôle central dans l’établissement de la Réforme à Genève au XVIᵉ siècle?",
+    a: [
+      "Jean Calvin",
+      "Ulrich Zwingli",
+      "Théodore de Bèze"
+    ]
+  },
+  {
+    q: "Quel événement de 1602, commémoré chaque année, marque la défense victorieuse de Genève contre une attaque savoyarde?",
+    a: [
+      "L’Escalade",
+      "La Journée du Jeûne",
+      "La Bataille de Saint-Gothard"
+    ]
+  },
+  {
+    q: "En quelle année Genève est-elle devenue officiellement un canton de la Confédération suisse?",
+    a: [
+      "1815",
+      "1798",
+      "1848"
+    ]
+  },
+  {
+    q: "Quelle institution internationale a été fondée à Genève en 1919?",
+    a: [
+      "La Société des Nations",
+      "Le Comité international olympique",
+      "L’UNESCO"
+    ]
+  },
+  {
+    q: "Quel rôle historique Genève a-t-elle joué dès le XVIIIᵉ siècle?",
+    a: [
+      "Un centre majeur d’imprimerie et de diffusion des idées philosophiques",
+      "Un port militaire stratégique",
+      "Une capitale impériale"
+    ]
+  },
+
+  // ================================
+  // 3) ADVANCED SWISS POLITICAL SETUP (5)
+  // ================================
+  {
+    q: "Dans quelle ville siège le Conseil fédéral lorsqu’il tient ses séances hebdomadaires?",
+    a: [
+      "Berne",
+      "Lausanne",
+      "Zurich"
+    ]
+  },
+  {
+    q: "Où se trouve le Tribunal fédéral, la plus haute autorité judiciaire de Suisse?",
+    a: [
+      "Lausanne (siège principal)",
+      "Genève",
+      "Lucerne"
+    ]
+  },
+  {
+    q: "Dans quelle ville se situe le siège du Conseil national et du Conseil des États?",
+    a: [
+      "Berne, au Palais fédéral",
+      "Genève, Palais des Nations",
+      "Fribourg, Hôtel cantonal"
+    ]
+  },
+  {
+    q: "Dans quel domaine la Confédération a-t-elle une compétence exclusive, sans partage avec les cantons?",
+    a: [
+      "La monnaie et la politique monétaire",
+      "L’éducation obligatoire",
+      "La police cantonale"
+    ]
+  },
+  {
+    q: "Quel mécanisme permet aux citoyens de contester une loi adoptée par le Parlement, s’ils réunissent 50 000 signatures en 100 jours?",
+    a: [
+      "Le référendum facultatif",
+      "L’initiative populaire",
+      "La consultation parlementaire"
+    ]
+  }
+
+];
+
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const model = QUESTIONS.map((item, idx) => {
+  const correct = item.a[0];
+  const shuffled = shuffle(item.a);
+  return {
+    index: idx,
+    text: item.q,
+    choices: shuffled.map(opt => ({ text: opt, isCorrect: opt === correct })),
+    answered: false,
+    pickedIndex: -1
+  };
+});
+
+const qTitle = document.getElementById('qTitle');
+const choicesEl = document.getElementById('choices');
+const btnPrev = document.getElementById('btnPrev');
+const btnNext = document.getElementById('btnNext');
+const progressLabel = document.getElementById('progressLabel');
+const resultPanel = document.getElementById('resultPanel');
+const gradeStamp = document.getElementById('gradeStamp');
+const resultText = document.getElementById('resultText');
+const timerEl = document.getElementById('timer');
+
+let qi = 0, score = 0;
+const total = model.length;
+
+let timerSec = 30 * 60;
+
+const timerInt = setInterval(() => {
+  timerSec--;
+  if (timerSec < 0) {
+    clearInterval(timerInt);
+    finishTest();
+    return;
+  }
+  const m = Math.floor(timerSec / 60).toString().padStart(2, '0');
+  const s = (timerSec % 60).toString().padStart(2, '0');
+  timerEl.textContent = `${m}:${s}`;
+}, 1000);
+
+function renderQuestion() {
+  const q = model[qi];
+  qTitle.textContent = q.text;
+  choicesEl.innerHTML = '';
+  q.choices.forEach((c, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice' + (q.answered ? ' disabled' : '');
+    btn.textContent = c.text;
+    btn.addEventListener('click', () => pick(idx));
+    choicesEl.appendChild(btn);
+  });
+
+  btnPrev.disabled = (qi === 0);
+  btnNext.disabled = !q.answered;
+
+  progressLabel.textContent = `Question ${qi + 1} sur ${total} · Points ${score}`;
+
+  if (q.answered) applyRevealStyles();
+
+  if (qi === total - 1) btnNext.textContent = "Voir le résultat →";
+  else btnNext.textContent = "Suivante →";
+}
+
+function pick(idx) {
+  const q = model[qi];
+  if (q.answered) return;
+
+  q.answered = true;
+  q.pickedIndex = idx;
+
+  if (q.choices[idx].isCorrect) score++;
+
+  applyRevealStyles();
+
+  btnNext.disabled = false;
+  progressLabel.textContent = `Question ${qi + 1} sur ${total} · Points ${score}`;
+
+  if (qi === total - 1) btnNext.textContent = "Voir le résultat →";
+}
+
+function applyRevealStyles() {
+  const q = model[qi];
+  const buttons = choicesEl.querySelectorAll('.choice');
+  buttons.forEach((b, i) => {
+    b.classList.add('disabled');
+    if (q.choices[i].isCorrect) b.classList.add('correct');
+    if (q.pickedIndex === i && !q.choices[i].isCorrect) b.classList.add('wrong');
+  });
+}
+
+btnNext.addEventListener('click', () => {
+  if (qi < total - 1) {
+    qi++;
+    renderQuestion();
+  } else {
+    finishTest();
+  }
+});
+
+btnPrev.addEventListener('click', () => {
+  if (qi > 0) {
+    qi--;
+    renderQuestion();
+  }
+});
+
+function finishTest() {
+  clearInterval(timerInt);
+  document.querySelector('.question-card').style.display = 'none';
+  resultPanel.style.display = 'block';
+
+  const wrong = total - score;
+
+  const pass = score >= 12;
+
+  gradeStamp.textContent = pass ? "Réussi !" : "Échoué";
+  gradeStamp.className = "result-stamp " + (pass ? "pass" : "fail");
+
+  resultText.textContent =
+    `Score final : ${score} / ${total} (${Math.round(score / total * 100)} %). ` +
+    `Bonnes réponses : ${score}. Mauvaises réponses : ${wrong}.`;
+
+  renderChart(score, wrong);
+}
+
+function renderChart(correct, wrong) {
+  const ctx = document.getElementById('resultChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Bonnes réponses', 'Mauvaises réponses'],
+      datasets: [{ data: [correct, wrong] }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        title: { display: true, text: 'Répartition des réponses' }
+      }
+    }
+  });
+}
+
+renderQuestion();
+</script>
+
+</body>
+</html>

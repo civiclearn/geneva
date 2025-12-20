@@ -1,0 +1,575 @@
+/* =============================================================================
+   CIVICLEARN — BLOG & ARTICLES THEME
+   Cleaned, corrected, upgraded version
+   ========================================================================== */
+
+/* -------------------------------------------------
+   GENERAL PAGE LAYOUT
+-------------------------------------------------- */
+/* ============================================================
+   HUB PAGE HERO — Dedicated styling (does NOT affect articles)
+   ============================================================ */
+
+.articles-hero {
+  max-width: 900px;
+  margin: 2.5rem auto 3rem;   /* Centers and gives breathing room */
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.articles-hero h1 {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.articles-hero-subtitle {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+/* HERO TEXT READABILITY FIX */
+.articles-hero {
+  position: relative;
+}
+
+.articles-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* darkness level */
+  z-index: 0;
+}
+
+/* Ensure hero text stays above the overlay */
+.articles-hero h1,
+.articles-hero p {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ============================================================
+   FIX: RESTORE ARTICLE PAGE LAYOUT (max-width, spacing, typography)
+   This ONLY affects article pages, not the hub.
+   ============================================================ */
+
+.article-hero {
+  max-width: 900px !important;
+  margin: 2.5rem auto 1.6rem !important;
+  padding: 0 1rem !important;
+  text-align: center;
+}
+
+.article-hero h1 {
+  font-size: clamp(2rem, 4.2vw, 2.7rem);
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+
+.article-subtitle {
+  max-width: 720px;
+  margin: 0 auto 1.8rem !important;
+  font-size: 1.08rem;
+  color: #555;
+}
+
+
+/* Restore CTA block spacing in articles */
+.article-cta-top,
+.article-cta-bottom {
+  margin-top: 2.2rem !important;
+  margin-bottom: 2.8rem !important;
+  max-width: 900px !important;
+}
+
+
+/* Restore hero image spacing and containment */
+.article-hero-image {
+  max-width: 900px !important;
+  margin: 2rem auto 2.2rem !important;
+  padding: 0 1rem !important;
+}
+
+.article-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+}
+
+
+/* Main article body stays centered and clean */
+.article-body {
+  max-width: 900px !important;
+  margin: 0 auto 3rem !important;
+  padding: 0 1rem !important;
+  line-height: 1.64;
+}
+
+
+
+/* =============================================================================
+   FEATURED ARTICLE — FINAL REWORKED DESIGN
+   ========================================================================== */
+
+.featured-article {
+  max-width: 1000px;
+  margin: 3rem auto 2rem;
+  padding: 0 1rem;
+}
+
+/* Optional badge */
+.featured-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Entire card is clickable but text is NOT underlined */
+.featured-card,
+.featured-card:visited {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #faf8ff 100%);
+  border-left: 7px solid var(--brand);
+  border-radius: 28px;
+  padding: 2.2rem;
+  text-decoration: none !important;
+  color: var(--text-main);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+  width: 100%;
+  max-width: 1000px;
+}
+.featured-article-section .section-title {
+  text-align: center;
+  display: block;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0,0,0,0.12);
+}
+
+/* ICON (Optional) */
+.featured-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.featured-card-image img {
+  width: 360px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.featured-card-content h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  text-decoration: none !important;
+}
+
+.featured-card-content p {
+  margin: 0 0 0.7rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.featured-read-more {
+  margin-top: 0.2rem;
+  font-weight: 600;
+  color: var(--brand);
+  display: inline-block;
+  text-decoration: none !important;
+}
+
+.featured-read-more:hover {
+  color: var(--brand-dark);
+}
+
+/* Responsive: Image on top, text below */
+@media (max-width: 780px) {
+  .featured-card {
+    flex-direction: column;
+    padding: 1.6rem;
+  }
+
+  .featured-card-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* =============================================================================
+   ALL ARTICLES GRID — FIXED PADDING, CLICKABLE, CLEAN
+   ========================================================================== */
+
+.articles-grid-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.articles-grid-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0 1rem;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+  margin: 2rem auto 4rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Card wrapper */
+.blog-card,
+.blog-card:visited {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  transition: 0.25s ease;
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+/* FIX: TEXT PADDING */
+.blog-card h3,
+.blog-card p {
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+}
+
+.blog-card h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.blog-card p {
+  margin-bottom: 1.3rem;
+  color: #444;
+  font-size: 0.92rem;
+}
+
+/* Ensures card height consistency */
+.blog-card > *:last-child {
+  margin-bottom: 1.4rem;
+}
+
+
+/* =============================================================================
+   CTA BLOCKS — Unified theme
+   ========================================================================== */
+
+.article-cta-top,
+.article-cta-bottom,
+.articles-cta-bottom {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 2rem 1.6rem 2.1rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.article-cta-top h3,
+.article-cta-bottom h3,
+.articles-cta-bottom h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.article-cta-top p,
+.article-cta-bottom p,
+.articles-cta-bottom p {
+  max-width: 600px;
+  margin: 0.2rem auto 1.2rem;
+  color: #555;
+  font-size: 0.98rem;
+}
+
+.cta-purple {
+  display: inline-block;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  font-size: 1rem;
+  transition: 0.25s ease;
+}
+
+.cta-purple:hover {
+  background: var(--brand-dark);
+}
+
+
+/* =============================================================================
+   ARTICLE PAGES — INTERNAL CONTENT
+   ========================================================================== */
+
+.article-body {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+  color: var(--text-main);
+}
+
+.article-body h2,
+.article-body h3 {
+  font-weight: 700;
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.article-body h2 {
+  font-size: 1.45rem;
+}
+
+.article-body h3 {
+  font-size: 1.25rem;
+}
+
+.article-body p {
+  font-size: 1.03rem;
+  margin-bottom: 1.1rem;
+  color: #333;
+}
+
+.article-body ul {
+  margin: 0 0 1.3rem 1.2rem;
+  padding: 0;
+  list-style: disc;
+}
+
+.article-body li {
+  margin-bottom: 0.4rem;
+  font-size: 1.02rem;
+  color: #333;
+}
+
+/* Images */
+.article-hero-image {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.article-hero-image img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+
+/* =============================================================================
+   MINI QUIZ
+   ========================================================================== */
+
+.article-mini-quiz,
+.mini-q-card,
+.mini-q-title,
+.mini-q-option {
+  font-family: 'Lexend', sans-serif !important;
+}
+
+.article-mini-quiz {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.mini-q-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 1.5rem;
+}
+
+/* Medium screens: switch to 2 columns */
+@media (max-width: 900px) {
+  .mini-q-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: single column */
+@media (max-width: 600px) {
+  .mini-q-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.mini-q-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 22px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.mini-q-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.mini-q-option {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  margin-bottom: 0.55rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mini-q-option.correct {
+  background: #e8f9f0;
+  color: #1e8b56;
+  border-color: #29c574;
+}
+
+.mini-q-option.wrong {
+  background: #fdecea;
+  color: #a1271f;
+  border-color: #d94d3f;
+}
+
+/* ============================================================
+   RELATED ARTICLES — CARD GRID (CIVICLEARN STYLE)
+   ============================================================ */
+
+.article-related {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.article-related h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* Always 3 cards on desktop */
+  gap: 1.4rem;
+}
+
+/* Medium screens: 2 cards */
+@media (max-width: 900px) {
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 card */
+@media (max-width: 600px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related-card {
+  background: #fff;
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--text-main);
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+}
+
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.related-card-body {
+  padding: 1rem 1.2rem 1.2rem;
+}
+
+.related-card-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.related-card-body p {
+  margin: 0;
+  color: #555;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+
+/* =============================================================================
+   RESPONSIVE TWEAKS
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-purple {
+    width: 100%;
+  }
+}
