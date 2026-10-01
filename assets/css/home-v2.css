@@ -332,7 +332,7 @@ h1,h2,h3,.fact-label{overflow-wrap:break-word;hyphens:manual;-webkit-hyphens:man
 .hero .exam-status-text{min-width:0}
 .hero .exam-status-sentence{margin:0;font-size:.84rem;line-height:1.35;color:var(--ink-2);text-align:left}
 .hero .hero-ccse-tag{margin:0 0 14px}
-.hero + section{margin-top:0!important;padding-top:24px}
+.hero + section:not(.section):not(.facts):not(.notice-wrap){margin-top:0!important;padding-top:24px}
 @media (max-width:860px){.hero .exam-status-inner{grid-template-columns:1fr;padding:0}.hero .exam-status-row{padding:8px 12px}}
 /* some pages force a tall stacked countdown on phones with !important; keep it a compact row inside the v2 hero */
 @media (max-width:860px){
@@ -341,3 +341,10 @@ h1,h2,h3,.fact-label{overflow-wrap:break-word;hyphens:manual;-webkit-hyphens:man
   .hero .exam-status-counter .count-number{font-size:1.5rem!important}
   .hero .exam-status-text{padding-top:0!important}
 }
+
+/* ---------- v2 pricing card on legacy pages (lists keep their old class for page scripts) ---------- */
+.pricing-v2 .price-right .feature-list{margin:0;padding:0;list-style:none}
+.pricing-v2 .price-right .feature-list li{padding-left:28px!important;margin:0;font-weight:400;border:0;background:none;font-size:.95rem;color:var(--ink-2)}
+.pricing-v2 .pricing-toggle-row{margin:0 auto 22px}
+.pricing-v2 .bundle-saving{margin-top:8px}
+.pricing-v2 .pricing-bonus{margin-top:16px;text-align:left}
