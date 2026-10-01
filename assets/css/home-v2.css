@@ -348,3 +348,29 @@ h1,h2,h3,.fact-label{overflow-wrap:break-word;hyphens:manual;-webkit-hyphens:man
 .pricing-v2 .pricing-toggle-row{margin:0 auto 22px}
 .pricing-v2 .bundle-saving{margin-top:8px}
 .pricing-v2 .pricing-bonus{margin-top:16px;text-align:left}
+
+/* ---------- shared blocks used by the language-exam sites ---------- */
+.features-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.feature-top{display:flex;flex-direction:column}
+.feat-metric{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.feat-metric b{font-size:2rem;font-weight:600;color:var(--brand-dark);line-height:1}
+.feat-metric span{font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.feat-badge{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:30px;padding:0 10px;margin-bottom:12px;border-radius:99px;background:var(--brand-soft);color:var(--brand-dark);font-weight:700;font-size:.85rem}
+.feat-link{display:inline-block;margin-top:14px;font-weight:600;font-size:.92rem;color:var(--brand-dark);text-decoration:none}
+.feat-link:hover{text-decoration:underline}
+.notice-slim{font-size:.95rem;color:var(--ink-2);padding:18px 24px}
+.notice-slim a{font-weight:600;color:var(--brand-dark)}
+.quiz-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.quiz-more{font-weight:600;color:var(--brand-dark);text-decoration:none}
+.quiz-more:hover{text-decoration:underline}
+.home-articles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.home-article-card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.home-article-card:hover{border-color:var(--brand-line);transform:translateY(-2px)}
+.home-article-card img{width:100%;height:150px;object-fit:cover;display:block}
+.home-article-body{padding:16px 18px}
+.home-article-body h3{font-size:1rem;font-weight:600;margin:0 0 6px;line-height:1.3}
+.home-article-body p{margin:0;font-size:.88rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.articles-more{margin:20px 0 0;text-align:center}
+.articles-more a{font-weight:600;color:var(--brand-dark);text-decoration:none}
+@media (max-width:1020px){.features-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.features-4,.home-articles-grid{grid-template-columns:1fr}.feature-top{display:flex}}
