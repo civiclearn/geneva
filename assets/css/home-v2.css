@@ -307,7 +307,7 @@ h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.015em}
   .logo-long{font-size:.86rem}
 }
 /* long compound words (German, Finnish…) must never overflow the screen */
-h1,h2,h3,.fact-label{overflow-wrap:break-word;hyphens:auto;-webkit-hyphens:auto}
+h1,h2,h3,.fact-label{overflow-wrap:break-word;hyphens:manual;-webkit-hyphens:manual}
 @media (max-width:480px){h1{overflow-wrap:anywhere}}
 .feature img{border-radius:12px;object-fit:cover}
 
